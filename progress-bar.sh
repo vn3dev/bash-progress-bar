@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
 
 progress-bar() {
-    local i=$1 # primeiro argumento $((i+1))
+    local current=$1 # primeiro argumento $((i+1))
     local len=$2 # segundo argumeto $len
 
-    echo "processing $1/$len"
+    local length=50
+    local perc_done=$((current * 100 / len))
+    local num_bars=$((perc_done * length / 100))
+
+    local i
+    local s='['
+    for ((i = 0; i < num_bars; i++)); do
+        s+='|'
+    done
+    for ((i = num_bars; i < length; i++)); do
+        s+=' '
+    done
+    s+=']'
+
+    echo "$s $current/$len ($perc_done%)"
+
 }
 
 # ativa globstar para busca recursiva (**)
