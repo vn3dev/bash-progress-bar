@@ -4,6 +4,8 @@ progress-bar() {
     local current=$1 # primeiro argumento $((i+1))
     local len=$2 # segundo argumeto $len
 
+    local bar_char="|"
+    local empty_char=" "
     local length=50 # tamanho da barra
     local perc_done=$((current * 100 / len))
     local num_bars=$((perc_done * length / 100))
@@ -11,10 +13,10 @@ progress-bar() {
     local i
     local s='['
     for ((i = 0; i < num_bars; i++)); do
-        s+='|'
+        s+=$bar_char
     done
     for ((i = num_bars; i < length; i++)); do
-        s+=' '
+        s+=$empty_char
     done
     s+=']'
 

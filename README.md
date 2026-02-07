@@ -1,0 +1,1 @@
+![GIF working bar](img/bar.gif)
